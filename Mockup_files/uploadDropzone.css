@@ -1,0 +1,111 @@
+/**
+ * @author paGarcia
+ */
+div.sinArchivo > div:last-of-type {
+	display: none !important;
+}
+div#docAdjuntos > div {
+	cursor: pointer;
+}
+.alertDocActivo {
+	padding: 8px 15px 8px 10px;
+	margin-bottom: 15px;
+	color: #0072b8;}
+.alertDocActivo .control-group{ margin-bottom: 6px }
+
+  
+
+
+
+div#btn_upload.btn, a#btn_documentosPropios.btn {
+	width: 100%;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	margin-top: 4px;
+	font-size: 12px;
+	font-weight: bold;
+}
+ 
+
+div#btn_upload.btn div, a#btn_documentosPropios.btn div {
+	position: relative;
+	top: 20%;
+}
+div#btn_upload.btn, a#btn_documentosNotificacion.btn {
+
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+div#btn_upload.btn div, a#btn_documentosNotificacion.btn div {
+	position: relative;
+	top: 20%;
+}
+div#btn_upload input[type="file"] {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	cursor: pointer;
+	left: 0;
+	top: 0;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+	filter: alpha(opacity=0);
+	-moz-opacity: 0;
+	-khtml-opacity: 0;
+	opacity: 0;
+}
+
+#dropzone, #dropzone1 {
+	width: 90%;
+    height: 90%;
+	line-height: 64px;
+	text-align: center;
+	font-weight: 400;
+	    margin: 30px auto;
+}
+#dropzone > img, #dropzone1 > img {
+	width: 30px;
+	height: 30px;
+}
+#dropzone:hover, #dropzone.in, #dropzone1:hover, #dropzone1.in {
+	width: 100%;
+	height: 100%;
+	line-height: 80px;
+	font-size: larger;
+	margin-left: 0px;
+}
+#dropzone.hover, #dropzone1.hover {
+	background: lawngreen;
+}
+#dropzone.fade, #dropzone1.fade  {
+	-webkit-transition: all 0.3s ease-out;
+	-moz-transition: all 0.3s ease-out;
+	-ms-transition: all 0.3s ease-out;
+	-o-transition: all 0.3s ease-out;
+	transition: all 0.3s ease-out;
+	opacity: 1;
+}
+/*
+.modal {
+	width: 70%;
+	margin-left: -35%;
+	position: absolute;
+}
+.modal #tableDocumentos.table tbody tr {
+	cursor: pointer;
+}
+*/
+#uploadArchivoTrabajo {
+	width: 20px;
+	height: 20px;
+	position: absolute;
+	margin-left: 20px;
+	left: 0;
+	top: 0;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+	filter: alpha(opacity=0);
+	-moz-opacity: 0;
+	-khtml-opacity: 0;
+	opacity: 0;
+}

@@ -1,0 +1,196 @@
+var port = null;
+var idExtChrome = 'copfinchbmcbjdffipaphabmjnnhijhe';
+
+var extFirefox = '2.0.1';
+var extFirefox57 = '3.0.0-fx';
+
+var flag = true;
+
+function notifyFirmaError(errorCode, error, exec) {
+	console.log([errorCode, error, exec]);
+	window.my.FirmaConTokenComponent.notifyError([errorCode, error, exec]);
+}
+
+function notifyExtError(errorMessage, version) {
+	window.my.FirmaConTokenComponent.notifyError([errorMessage, version]);
+}
+
+function notifyExtErrorPage(errorMessage, version) {
+	console.log("notifyExtErrorPage "+ "["+errorMessage+", "+version + "]");
+	window.my.FirmaConTokenComponent.notifyError([errorMessage, version]);
+}
+
+window.addEventListener("message", function(event) {
+	if (event.source == window && event.data.direction
+					&& event.data.direction == "notifyExtErrorCode") {
+			errorMessage = event.data.message;
+			
+			if (errorMessage =="requiere-host-firefox" ){
+				window.my.FirmaConTokenComponent.requiereHostFirefox();
+			} 
+	}
+	if (event.source == window && event.data.direction
+					&& event.data.direction == "onFirmaFirmarDocHash") {
+						var hashFirmado = event.data.message;
+			window.my.FirmaConTokenComponent.hashFirmado(hashFirmado[0]);
+	}
+
+	if (event.source == window && event.data.direction
+					&& event.data.direction == "certificados") {
+						console.log(event.data.message);
+						certificados = event.data.message;
+						window.my.FirmaConTokenComponent.showCertificados(certificados);
+			//sendZKEvent('onFirmaPrepararPdf', [ event.data.message ]);
+
+	}
+
+	if (event.source == window && event.data.direction
+					&& event.data.direction == "onFirmaFirmarDocerrorCode") {
+						console.log(event.data.message);
+			//sendZKEvent('onFirmaError', event.data.message);
+
+	}
+
+});
+
+function enviarUrlExtension(url) {
+	window.enviarUrlExtensionFirefox(url);
+}
+
+function iniciarFirmaConToken() {
+
+	console.log("iniciando proceso de firma con token... " + navigator.userAgent );
+
+	var uMatch = navigator.userAgent.match(/Firefox\/(.*)$/), ffVersion;
+	if (uMatch && uMatch.length > 1) {
+		ffVersion = uMatch[1];
+	}
+
+	// Chrome
+	if (navigator.userAgent.toLowerCase().indexOf('chrome') > -1) {
+		debugger
+		console.log('Ingresa en Chrome');
+		iniciarProcesoFirmadoChrome();
+	} else if (ffVersion && ffVersion >= 57) {
+		console.log('Ingresa en Firefox version mayor 57');
+		$body = $('body');
+		if (document.body.classList.contains("firefox_plugin_installed")) {
+			alive = "extension_online";
+			iniciarProcesoFirmadoFirefox();
+
+		} else {
+			//notifyExtErrorPage('requiere-extension-firefox', extFirefox57);
+			window.my.FirmaConTokenComponent.requiereExtensionFirefox();
+		}
+
+	} 
+	 else {
+		console.log('Ingresa en otro navegador');
+		alert('Requiere Navegador Chrome o Mozilla Firefox versión 57 o superior para firmar');
+	}
+};
+
+
+function connectContentScriptFirefox() {
+	window.postMessage({
+		direction: "check_extension_Firefox",
+		message: "ok_extension_firefox_alive"
+	}, "*");
+
+}
+
+function iniciarProcesoFirmadoFirefox() {
+	window.postMessage({
+		direction: "iniciar_firmado",
+		message: "iniciar_firmado"
+	}, "*");
+
+}
+
+var alive = '';
+
+function sleep(milliseconds) {
+	var start = new Date().getTime();
+	for (var i = 0; i < 1e7; i++) {
+		if ((new Date().getTime() - start) > milliseconds) {
+			break;
+		}
+	}
+}
+
+function setAlive(value) {
+	alive = value;
+	console.log("Value of globalVar set to: " + alive);
+	iniciarProcesoFirmadoFirefox();
+}
+
+function iniciarProcesoFirmadoChrome() {
+	port = chrome.runtime.connect(idExtChrome);
+
+	port.onDisconnect.addListener(function () {
+		//notifyExtError('requiere-extension-chrome', null);
+		window.my.FirmaConTokenComponent.requiereExtensionChrome();
+	});
+
+	port.onMessage.addListener(function (request, sender, sendResponse) {
+		if (request.response == 'certificados') {
+			//notifyPrepararPdf(request.certs);
+			window.my.FirmaConTokenComponent.showCertificados(request.certs);
+		} else if (request.response == 'firmar') {
+			//notifyFirmarDoc(request.hashFirmado, request.hashFirmadoRec);
+			window.my.FirmaConTokenComponent.hashFirmado(request.hashFirmado);
+		} else if (request.response == 'error') {
+			//notifyFirmaError(request.errorCode, request.errorDesc,request.exception);
+			window.my.FirmaConTokenComponent.notifyError(request);
+		} else if (request.response == 'disconnectedHost') {
+			//notifyExtError(request.message, null);
+			window.my.FirmaConTokenComponent.notifyError(request);
+		}
+	});
+	port.postMessage({ 'op': 'certificados' });
+};
+
+
+function enviarHashPage(certAlias, hash64, hashRect64) {
+	var uMatch = navigator.userAgent.match(/Firefox\/(.*)$/), ffVersion;
+	if (uMatch && uMatch.length > 1) {
+		ffVersion = uMatch[1];
+	}
+	if (ffVersion >= 57) {
+		enviarHashFirefox(certAlias, hash64, hashRect64);
+	} else {
+		if ('InstallTrigger' in window) {
+			window.enviarHashFirefox(certAlias, hash64, hashRect64);
+		} else {
+			enviarHashChrome(certAlias, hash64, hashRect64);
+		}
+	}
+};
+
+function enviarHashFirefox(certi, hash64, hashRect64) {
+	console.log('enviarHashFf '+ certi);
+	window.postMessage({
+		direction: "cert_firefox",
+		message: certi
+	}, "*");
+
+	window.postMessage({
+		direction: "hash64_firefox",
+		message: hash64
+	}, "*");
+
+	window.postMessage({
+		direction: "hashRect64_firefox",
+		message: hashRect64
+	}, "*");
+};
+
+function enviarHashChrome(certi, hash64, hashRect64) {
+	var message = {
+		'op': 'firmar',
+		'cert': certi,
+		'hash': hash64,
+		'hashRect': hashRect64
+	};
+	port.postMessage(message);
+};

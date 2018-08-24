@@ -1,0 +1,37 @@
+/**
+ * Created by Santiago on 6/2/2017.
+ */
+
+
+
+function obtenerContrato(contratoHTML) {
+  var divContratoHTML = document.getElementById("divContrato");
+  divContratoHTML.innerHTML= contratoHTML;
+}
+
+function combosLugarNacimientosUpdatear(opcionCombo) {
+  var esArgentina = (opcionCombo== "Argentina");
+  comboProvinciaOrigen.lastElementChild.disabled = !esArgentina;
+  comboDepartamentoOrigen.lastElementChild.disabled = !esArgentina;
+  comboLocalidadOrigen.lastElementChild.disabled = !esArgentina;
+  inputPaisExtranjero.disabled=esArgentina;
+  if (esArgentina){
+    inputPaisExtranjero.value="";
+  }
+    
+}
+
+function obtenerPaisOrigen(opcionCombo) {
+    if (opcionCombo!="Argentina"){
+        var pais = document.getElementById("inputPaisExtranjero").value;
+        return pais;
+    }else{
+      return "Argentina";
+    }
+}
+
+function setPaisOrigenExtranjero(paisOrigenextranjero) {
+    document.getElementById("inputPaisExtranjero").value=paisOrigenextranjero;
+
+}
+

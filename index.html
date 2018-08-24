@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <title>Mis Tramites - Trámites a Distancia</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="------------">
+  <meta name="author" content="NIC Argentina">
+  <base href=".">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="./Mockup_files/bootstrap.min.css">
+  <link rel="stylesheet" href="./Mockup_files/poncho.css">
+  <link rel="stylesheet" href="./Mockup_files/back-to-top.css">
+  <link rel="stylesheet" href="./Mockup_files/styles.css">
+  <link rel="stylesheet" href="./Mockup_files/uploadDropzone.css">
+  <link rel="shortcut icon" href="https://tramitesadistancia.gob.ar/tramitesadistancia/images/favicon.ico">
+  <link rel="stylesheet" href="./Mockup_files/font-awesome.min.css">
+
+  <!--[if !IE]><!-->
+  <link rel="stylesheet" href="./Mockup_files/tablas-responsivas.css">
+  <!--<![endif]-->
+
+  <link href="./Mockup_files/styles.095c03904035d67e47e7.bundle.css" rel="stylesheet">
+  <style></style>
+  <style>
+    .loading[_ngcontent-bxu-13] {
+      width: 100%;
+      height: 100%;
+      top: 0px;
+      left: 0px;
+      position: fixed;
+      display: block;
+      opacity: 0.7;
+      -moz-filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=70);
+      -ms-filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=70);
+      filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=70);
+      background-color: #fff;
+      z-index: 99;
+      text-align: center;
+    }
+
+    .loading[_ngcontent-bxu-13] div[_ngcontent-bxu-13] {
+      position: absolute;
+
+      top: 50%;
+      left: 50%;
+      width: 200px;
+      margin-left: -100px;
+      height: 50px;
+      margin-top: -50px;
+    }
+
+    .loading[_ngcontent-bxu-13] div[_ngcontent-bxu-13]:first-child {
+      position: absolute;
+      margin-top: -55px;
+      margin-left: -75px;
+      width: 150px;
+      white-space: nowrap;
+    }
+
+    .loading[_ngcontent-bxu-13] div[_ngcontent-bxu-13]:last-child {
+      position: absolute;
+      margin-top: -35px;
+      width: 150px;
+      margin-left: -75px;
+      white-space: nowrap;
+    }
+
+    .loading[_ngcontent-bxu-13] img[_ngcontent-bxu-13] {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-top: -33px;
+      margin-left: -33px;
+      z-index: 100;
+      content: url("./images/ajax-loader.gif");
+    }
+  </style>
+  <style>
+    .ng2-pagination {
+      margin-left: 0;
+      margin-bottom: 1rem;
+    }
+
+    .ng2-pagination::before,
+    .ng2-pagination::after {
+      content: ' ';
+      display: table;
+    }
+
+    .ng2-pagination::after {
+      clear: both;
+    }
+
+    .ng2-pagination li {
+      -moz-user-select: none;
+      -webkit-user-select: none;
+      -ms-user-select: none;
+      margin-right: 0.0625rem;
+      border-radius: 0;
+    }
+
+    .ng2-pagination li {
+      display: inline-block;
+    }
+
+    .ng2-pagination a,
+    .ng2-pagination button {
+      color: #0a0a0a;
+      display: block;
+      padding: 0.1875rem 0.625rem;
+      border-radius: 0;
+    }
+
+    .ng2-pagination a:hover,
+    .ng2-pagination button:hover {
+      background: #e6e6e6;
+    }
+
+    .ng2-pagination .current {
+      padding: 0.1875rem 0.625rem;
+      background: #2199e8;
+      color: #fefefe;
+      cursor: default;
+    }
+
+    .ng2-pagination .disabled {
+      padding: 0.1875rem 0.625rem;
+      color: #cacaca;
+      cursor: default;
+    }
+
+    .ng2-pagination .disabled:hover {
+      background: transparent;
+    }
+
+    .ng2-pagination .ellipsis::after {
+      content: '…';
+      padding: 0.1875rem 0.625rem;
+      color: #0a0a0a;
+    }
+
+    .ng2-pagination .pagination-previous a::before,
+    .ng2-pagination .pagination-previous.disabled::before {
+      content: '«';
+      display: inline-block;
+      margin-right: 0.5rem;
+    }
+
+    .ng2-pagination .pagination-next a::after,
+    .ng2-pagination .pagination-next.disabled::after {
+      content: '»';
+      display: inline-block;
+      margin-left: 0.5rem;
+    }
+
+    .ng2-pagination .show-for-sr {
+      position: absolute !important;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+    }
+  </style>
+  <style>
+    .pagination[_ngcontent-bxu-103] {
+      display: inline-block;
+    }
+
+    .pagination[_ngcontent-bxu-103] a[_ngcontent-bxu-103] {
+      color: black;
+      float: left;
+      padding: 8px 16px;
+      text-decoration: none;
+    }
+
+    .pagination[_ngcontent-bxu-103] a.active[_ngcontent-bxu-103] {
+      background-color: #4CAF50;
+      color: white;
+      border-radius: 5px;
+    }
+
+    .pagination[_ngcontent-bxu-103] a[_ngcontent-bxu-103]:hover:not(.active) {
+      background-color: #ddd;
+      border-radius: 5px;
+    }
+  </style>
+  <style>
+    .show[_ngcontent-bxu-7] {
+      opacity: 1 !important;
+    }
+
+    .step[_ngcontent-bxu-7] {
+      opacity: 0;
+      -webkit-transition: .5s ease-in-out all;
+      transition: .5s ease-in-out all;
+    }
+  </style>
+  <style id="__web-inspector-hide-shortcut-style__" type="text/css">
+    .__web-inspector-hide-shortcut__,
+    .__web-inspector-hide-shortcut__ *,
+    .__web-inspector-hidebefore-shortcut__::before,
+    .__web-inspector-hideafter-shortcut__::after {
+      visibility: hidden !important;
+    }
+
+    .alert-warning {
+      color: #8a6d3b;
+      background-color: #fff0c9 !important;
+      border-color: #faebcc;
+      color: #000;
+    }
+
+    .btn {
+      margin-bottom: 0;
+    }
+    @media (max-width: 1000px) {
+        .acciones a{
+            display: block;
+            margin-bottom: 5px;
+        }
+        .acciones a:last-child{
+            margin-bottom: 0px;
+        }
+    }
+  </style>
+</head>
+
+<body cz-shortcut-listen="true">
+  <app-root ng-version="2.4.9" _nghost-bxu-169="">
+    <!--template bindings={}-->
+    <app-header _ngcontent-bxu-169="" _nghost-bxu-165="">
+      <!--template bindings={}-->
+      <header _ngcontent-bxu-165="">
+        <nav _ngcontent-bxu-165="" class="navbar navbar-top navbar-default" role="navigation">
+          <div _ngcontent-bxu-165="" class="container">
+            <div _ngcontent-bxu-165="">
+              <div _ngcontent-bxu-165="" class="navbar-header">
+                <button _ngcontent-bxu-165="" class="navbar-toggle" data-target="#main-navbar-collapse" data-toggle="collapse" type="button">
+          <span _ngcontent-bxu-165="" class="sr-only">Toggle navigation</span>
+          <span _ngcontent-bxu-165="" class="badge notificas">.</span>
+          <span _ngcontent-bxu-165="" class="icon-bar"></span>
+          <span _ngcontent-bxu-165="" class="icon-bar"></span>
+          <span _ngcontent-bxu-165="" class="icon-bar"></span>
+        </button>
+                <a _ngcontent-bxu-165="" class="navbar-brand" routerlink="nuevo-tramite" href="https://tramitesadistancia.gob.ar/tramitesadistancia/nuevo-tramite">
+          <img _ngcontent-bxu-165="" alt="Brand" src="./Mockup_files/logo-tad.svg">
+          <h1 _ngcontent-bxu-165="" class="sr-only">Trámites a Distancia <small _ngcontent-bxu-165="">Presidencia de la Nación</small></h1>
+        </a>
+              </div>
+              <!--template bindings={}-->
+              <div _ngcontent-bxu-165="" class="collapse navbar-collapse" id="main-navbar-collapse">
+                <ul _ngcontent-bxu-165="" class="nav navbar-nav navbar-right">
+                  <li _ngcontent-bxu-165=""><a _ngcontent-bxu-165="" routerlink="nuevo-tramite" class="active" href="https://tramitesadistancia.gob.ar/tramitesadistancia/nuevo-tramite">Iniciar trámite</a></li>
+                  <li _ngcontent-bxu-165=""><a _ngcontent-bxu-165="" routerlink="mis-tramites" href="https://tramitesadistancia.gob.ar/tramitesadistancia/mis-tramites">Mis trámites</a></li>
+                  <li _ngcontent-bxu-165=""><a _ngcontent-bxu-165="" routerlink="misTareas" href="https://tramitesadistancia.gob.ar/tramitesadistancia/misTareas">Tareas<!--template bindings={}--></a></li>
+                  <li _ngcontent-bxu-165=""><a _ngcontent-bxu-165="" routerlink="notificaciones" href="https://tramitesadistancia.gob.ar/tramitesadistancia/notificaciones">Notificaciones <!--template bindings={}--></a></li>
+                  <li _ngcontent-bxu-165=""><a _ngcontent-bxu-165="" routerlink="expedientes" href="https://tramitesadistancia.gob.ar/tramitesadistancia/expedientes">Consulta </a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </header>
+
+      <!--template bindings={}-->
+      <div _ngcontent-bxu-165="" class="custom">
+        <div _ngcontent-bxu-165="" class="jumbotron_bar">
+          <div _ngcontent-bxu-165="" class="container">
+            <div _ngcontent-bxu-165="" class="row">
+              <div _ngcontent-bxu-165="" class="col-sm-6">
+                <!--template bindings={}-->
+              </div>
+              <div _ngcontent-bxu-165="" class="col-sm-6">
+                <div _ngcontent-bxu-165="" class="logueado">
+                  <div _ngcontent-bxu-165="" class="nom-logueado">
+                    <a _ngcontent-bxu-165="" class="dropdown-toggle" data-toggle="dropdown" href="https://tramitesadistancia.gob.ar/tramitesadistancia/#">JUAN PÉREZ<b _ngcontent-bxu-165="" class="caret"></b></a>
+                    <ul _ngcontent-bxu-165="" class="dropdown-menu submenu" role="menu">
+                      <!--template bindings={}-->
+                      <li _ngcontent-bxu-165=""><a _ngcontent-bxu-165="" routerlink="misdatos" href="https://tramitesadistancia.gob.ar/tramitesadistancia/misdatos">Mis datos</a></li>
+
+
+                      <li _ngcontent-bxu-165="" class="salir"><a _ngcontent-bxu-165="" href="https://tramitesadistancia.gob.ar/tramitesadistancia/logout;action=logout">Salir <i _ngcontent-bxu-165="" aria-hidden="true" class="fa fa-sign-out"></i></a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </app-header>
+    <router-outlet _ngcontent-bxu-169=""></router-outlet>
+    <app-zero _nghost-bxu-37="">
+      <div _ngcontent-bxu-37="" class="container">
+        <!--template bindings={}-->
+        <app-gestiondominionic _nghost-bxu-103="">
+          <div _ngcontent-bxu-103="" class="container poco-cont">
+            <app-show-msg _ngcontent-bxu-103="" _nghost-bxu-7="">
+              <!--template bindings={}-->
+
+            </app-show-msg>
+            <form _ngcontent-bxu-103="" class="form-horizontal col-md-6 col-md-offset-3 ng-untouched ng-pristine ng-valid">
+              <h2 _ngcontent-bxu-103="">Buscar dominios</h2>
+
+              <p _ngcontent-bxu-103="">Consultá la disponibilidad de un dominio</p>
+
+              <!--template bindings={}-->
+              <!--template bindings={}-->
+              <!--template bindings={}-->
+
+              <!--template bindings={}-->
+
+              <!--template bindings={}-->
+
+              <div _ngcontent-bxu-103="" class="busca-dominios">
+                <div _ngcontent-bxu-103="" class="campo-busca">
+                  <label _ngcontent-bxu-103="" class="sr-only">Dominio</label>
+
+                  <input _ngcontent-bxu-103="" class="form-control form-text required ng-untouched ng-pristine ng-valid" id="edit-txtbuscar" maxlength="128" name="txtBuscar" size="60" type="text" value="">
+                </div>
+                <div _ngcontent-bxu-103="" class="campo-zona">
+                  <select _ngcontent-bxu-103="" class="form-control form-select ng-untouched ng-pristine ng-valid" name="zonas" value=".com.ar">
+          <!--template bindings={}--><option _ngcontent-bxu-103="" value=".net.ar">.net.ar</option><option _ngcontent-bxu-103="" value=".com.ar" selected>.com.ar</option>
+        </select>
+                </div>
+              </div>
+              <!--template bindings={}-->
+              <div _ngcontent-bxu-103="" class="col-md-12 btn-ingresa-rep">
+                <!--template bindings={}-->
+
+                <!--template bindings={}-->
+
+                <!--template bindings={}-->
+
+                <!--template bindings={}-->
+
+                <!--template bindings={}-->
+              </div>
+
+              <div _ngcontent-bxu-103="" class="modal fade" id="modalTransferenciaDominio" role="dialog" tabindex="-1">
+                <div _ngcontent-bxu-103="" class="modal-dialog" role="document">
+                  <div _ngcontent-bxu-103="" class="modal-content">
+                    <div _ngcontent-bxu-103="" class="modal-header">
+                      <button _ngcontent-bxu-103="" aria-label="Close" class="close" data-dismiss="modal" type="button"><span _ngcontent-bxu-103="" aria-hidden="true">×</span></button>
+                      <h4 _ngcontent-bxu-103="" class="modal-title" id="myModalLabel">Transferencia de Dominio</h4>
+                    </div>
+                    <div _ngcontent-bxu-103="" class="modal-body">
+                      <!--template bindings={}-->
+                      <!--template bindings={}-->
+                      <form _ngcontent-bxu-103="" class="form-horizontal ng-untouched ng-pristine ng-valid">
+                        <div _ngcontent-bxu-103="" class="form-group">
+                          <label _ngcontent-bxu-103="" class="col-sm-4 control-label" for="inputPassword3">Dominio:</label>
+                          <div _ngcontent-bxu-103="" class="col-sm-8">
+                            <label _ngcontent-bxu-103="" class="control-label col-sm-2" for="email">undefined.com.ar</label>
+                          </div>
+                        </div>
+                        <div _ngcontent-bxu-103="" class="form-group">
+                          <label _ngcontent-bxu-103="" class="col-sm-4 control-label" for="inputPassword3">Inrese el N° de CUIT del destinatario:</label>
+                          <div _ngcontent-bxu-103="" class="col-sm-6">
+                            <input _ngcontent-bxu-103="" autofocus class="form-control ng-untouched ng-pristine ng-valid" name="txtCuitATransferir" type="text">
+                          </div>
+                        </div>
+                      </form>
+
+                    </div>
+                    <div _ngcontent-bxu-103="" class="modal-footer">
+                      <a _ngcontent-bxu-103="" class="btn btn-danger btn-sm pull-left" data-dismiss="modal" type="submit">
+              <i _ngcontent-bxu-103="" aria-hidden="true" class="fa fa-times-circle"></i> Salir
+            </a>
+                      <!--template bindings={}--><a _ngcontent-bxu-103="" class="btn btn-primary btn-sm pull-right" type="submit">
+              <i _ngcontent-bxu-103="" aria-hidden="true" class="fa fa-play"></i> Ejecutar
+            </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+            <br _ngcontent-bxu-103="">
+          </div>
+          <app-loading _ngcontent-bxu-103="" _nghost-bxu-13="">
+            <!--template bindings={}-->
+          </app-loading>
+
+          <!--template bindings={}-->
+          <div _ngcontent-bxu-103="" class="container">
+
+
+
+
+            <h2 _ngcontent-bxu-103="">Lista dominios</h2>
+
+            <div _ngcontent-bxu-103="" class="describe">
+              Estos dominios pertenecen a <b _ngcontent-bxu-103="">JUAN PÉREZ</b>
+            </div>
+
+            <!-- <div _ngcontent-bxu-103="" class="busca-tabla">
+              <div _ngcontent-bxu-103="" class="input-group" id="edit-basic">
+                <div _ngcontent-bxu-103="" class="form-item ">
+                  <input _ngcontent-bxu-103="" autocomplete="off" class="input-sm form-control ng-untouched ng-pristine ng-valid" dir="auto" id="edit-keys" maxlength="255" name="keys" placeholder="Buscar un dominio por su nombre" size="20" spellcheck="false" type="text"
+                    value="">
+                </div>
+                <span _ngcontent-bxu-103="" class="input-group-btn">
+          <button _ngcontent-bxu-103="" class="btn-primary btn" id="edit-submit" name="op" type="submit"><span _ngcontent-bxu-103="" class="glyphicon glyphicon-search"></span></button>
+                </span>
+              </div>
+            </div> -->
+
+
+            <div _ngcontent-bxu-103="" class="modal fade" id="modalTransferenciaDominioGrilla" role="dialog" tabindex="-1">
+              <div _ngcontent-bxu-103="" class="modal-dialog" role="document">
+                <div _ngcontent-bxu-103="" class="modal-content">
+                  <div _ngcontent-bxu-103="" class="modal-header">
+                    <button _ngcontent-bxu-103="" aria-label="Close" class="close" data-dismiss="modal" type="button"><span _ngcontent-bxu-103="" aria-hidden="true">×</span></button>
+                    <h4 _ngcontent-bxu-103="" class="modal-title" id="myModalLabel">Transferencia de Dominio</h4>
+                  </div>
+                  <div _ngcontent-bxu-103="" class="modal-body">
+                    <!--template bindings={}-->
+                    <!--template bindings={}-->
+                    <form _ngcontent-bxu-103="" class="form-horizontal ng-untouched ng-pristine ng-valid">
+                      <div _ngcontent-bxu-103="" class="form-group">
+                        <label _ngcontent-bxu-103="" class="col-sm-4 control-label" for="inputPassword3">Dominio:</label>
+                        <div _ngcontent-bxu-103="" class="col-sm-8">
+                          <label _ngcontent-bxu-103="" class="control-label col-sm-2" for="email"></label>
+                        </div>
+                      </div>
+                      <div _ngcontent-bxu-103="" class="form-group">
+                        <label _ngcontent-bxu-103="" class="col-sm-4 control-label" for="inputPassword3">Ingrese el N° de CUIT del destinatario:</label>
+                        <div _ngcontent-bxu-103="" class="col-sm-6">
+                          <input _ngcontent-bxu-103="" autofocus class="form-control ng-untouched ng-pristine ng-valid" name="txtCuitATransferir" type="text">
+                        </div>
+                      </div>
+                    </form>
+
+                  </div>
+                  <div _ngcontent-bxu-103="" class="modal-footer">
+                    <a _ngcontent-bxu-103="" class="btn btn-danger btn-sm pull-left" data-dismiss="modal" type="submit">
+              <i _ngcontent-bxu-103="" aria-hidden="true" class="fa fa-times-circle"></i> Salir
+            </a>
+                    <!--template bindings={}--><a _ngcontent-bxu-103="" class="btn btn-primary btn-sm pull-right" type="submit">
+              <i _ngcontent-bxu-103="" aria-hidden="true" class="fa fa-play"></i> Ejecutar
+            </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br _ngcontent-bxu-103=""><br _ngcontent-bxu-103="">
+            <div id="renomult" class="renmul col-12 col-sm-12 col-lg-12 bg-gray">     
+                <div class="col-6 col-xs-12 col-sm-6 col-md-8 col-lg-8 costosDom"><strong><span id="cantdom">4</span> </strong> (Costo total $ <span id="preciodom"></span>.00)</div>
+                <div class="col-6 col-xs-12 col-sm-6 col-md-4 col-lg-4 costosRen"><button class="btn btn-success" href="#"><i aria-hidden="true" class="fa fa-refresh"></i><span id="rendom">Renovar dominios</span></button></div>
+            </div>
+
+            <div _ngcontent-bxu-103="" class="col-12 col-sm-12 col-lg-12 table-responsive">
+              <table _ngcontent-bxu-103="" class="table table-striped t-dominios tab-respon table-content-centered" id="tablaDominios">
+                <thead _ngcontent-bxu-103="">
+                  <tr _ngcontent-bxu-103="">
+                  <th _ngcontent-bxu-103="">
+                      <form>
+                        <input id="selectall" type="checkbox" name="" value="">
+                          <label class="sr-only" for="selectall"> Seleccionar todo</label>
+                        </form>
+                    </th>
+                    <th _ngcontent-bxu-103="">
+                      <app-sort _ngcontent-bxu-103="" campo="domain" titulo="Dominio" _nghost-bxu-9="">
+                        <div _ngcontent-bxu-9="" class="manito selectable">
+                          Dominio&nbsp;
+                          <div _ngcontent-bxu-9="" style="display: inline;">
+                            <i _ngcontent-bxu-9="" aria-hidden="true" class="fa fa-sort" style="color: #d4d4d4; position: absolute;"></i>
+                            <i _ngcontent-bxu-9="" aria-hidden="true" class="fa hidden fa-sort-asc" style="position: absolute;"></i>
+                          </div>
+                        </div>
+                      </app-sort>
+                    </th>
+                    <th _ngcontent-bxu-103="">
+                      <app-sort _ngcontent-bxu-103="" campo="created" titulo="Alta" _nghost-bxu-9="">
+                        <div _ngcontent-bxu-9="" class="manito selectable">
+                          Alta&nbsp;
+                          <div _ngcontent-bxu-9="" style="display: inline;">
+                            <i _ngcontent-bxu-9="" aria-hidden="true" class="fa fa-sort" style="color: #d4d4d4; position: absolute;"></i>
+                            <i _ngcontent-bxu-9="" aria-hidden="true" class="fa hidden fa-sort-asc" style="position: absolute;"></i>
+                          </div>
+                        </div>
+                      </app-sort>
+                    </th>
+                    <th _ngcontent-bxu-103="">
+                      <app-sort _ngcontent-bxu-103="" campo="expiration_date" titulo="Vencimiento" _nghost-bxu-9="">
+                        <div _ngcontent-bxu-9="" class="manito selectable">
+                          Vencimiento&nbsp;
+                          <div _ngcontent-bxu-9="" style="display: inline;">
+                            <i _ngcontent-bxu-9="" aria-hidden="true" class="fa fa-sort" style="color: #d4d4d4; position: absolute;"></i>
+                            <i _ngcontent-bxu-9="" aria-hidden="true" class="fa hidden fa-sort-asc" style="position: absolute;"></i>
+                          </div>
+                        </div>
+                      </app-sort>
+                    </th>
+                    <th _ngcontent-bxu-103="">
+                      <app-sort _ngcontent-bxu-103="" campo="state" titulo="Estado" _nghost-bxu-9="">
+                        <div _ngcontent-bxu-9="" class="manito selectable">
+                          Estado&nbsp;
+                          <div _ngcontent-bxu-9="" style="display: inline;">
+                            <i _ngcontent-bxu-9="" aria-hidden="true" class="fa fa-sort" style="color: #d4d4d4; position: absolute;"></i>
+                            <i _ngcontent-bxu-9="" aria-hidden="true" class="fa hidden fa-sort-asc" style="position: absolute;"></i>
+                          </div>
+                        </div>
+                      </app-sort>
+                    </th>
+                    <th _ngcontent-bxu-103="">
+                      <app-sort _ngcontent-bxu-103="" campo="delegated" titulo="Delegado" _nghost-bxu-9="">
+                        <div _ngcontent-bxu-9="" class="manito selectable">
+                          Delegado&nbsp;
+                          <div _ngcontent-bxu-9="" style="display: inline;">
+                            <i _ngcontent-bxu-9="" aria-hidden="true" class="fa fa-sort" style="color: #d4d4d4; position: absolute;"></i>
+                            <i _ngcontent-bxu-9="" aria-hidden="true" class="fa hidden fa-sort-asc" style="position: absolute;"></i>
+                          </div>
+                        </div>
+                      </app-sort>
+                    </th>
+                    <th _ngcontent-bxu-103="">
+                      <app-sort _ngcontent-bxu-103="" campo="actions" titulo="Acciones" _nghost-bxu-9="">
+                        <div _ngcontent-bxu-9="" class="manito selectable">
+                          Acciones&nbsp;
+                          <div _ngcontent-bxu-9="" style="display: inline;">
+                            <i _ngcontent-bxu-9="" aria-hidden="true" class="fa fa-sort" style="color: #d4d4d4; position: absolute;"></i>
+                            <i _ngcontent-bxu-9="" aria-hidden="true" class="fa hidden fa-sort-asc" style="position: absolute;"></i>
+                          </div>
+                        </div>
+                      </app-sort>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody _ngcontent-bxu-103="">
+                  <!--template bindings={}-->
+                  <tr _ngcontent-bxu-103="">
+                    <td _ngcontent-bxu-103="">&nbsp;</td>
+                    <td _ngcontent-bxu-103="">misitio.net.ar</td>
+                    <td _ngcontent-bxu-103="">11/02/2005</td>
+                    <td _ngcontent-bxu-103="">11/02/2019</td>
+                    <td _ngcontent-bxu-103="">Registrado</td>
+
+                    <td _ngcontent-bxu-103="">SI</td>
+                    <td _ngcontent-bxu-103="">
+                      <div _ngcontent-bxu-103="" class="acciones">
+                        <a _ngcontent-bxu-103="">
+                            <button class="btn btn-primary btn-sm" href="#"><i aria-hidden="true" class="fa fa-forward"></i> Transferir</button>
+                        </a>
+                        <a _ngcontent-bxu-103="">
+                            <button class="btn btn-primary btn-sm" href="#"><i aria-hidden="true" class="fa fa-share"></i> Delegar</button>
+                        </a>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr _ngcontent-bxu-103="">
+                    <td _ngcontent-bxu-103=""><form><input type="checkbox" name="" value=""></form></td>
+                    <td _ngcontent-bxu-103="">misitio.com.ar</td>
+                    <td _ngcontent-bxu-103="">27/03/2008</td>
+                    <td _ngcontent-bxu-103="">27/08/2018</td>
+                    <td _ngcontent-bxu-103="">Registrado</td>
+
+                    <td _ngcontent-bxu-103="">SI</td>
+                    <td _ngcontent-bxu-103="">
+                      <div _ngcontent-bxu-103="" class="acciones">
+                          <a _ngcontent-bxu-103="">
+                              <button class="btn btn-success btn-sm" href="#"><i aria-hidden="true" class="fa fa-refresh"></i> Renovar</button>
+                          </a>
+                        <a _ngcontent-bxu-103="">
+                            <button class="btn btn-primary btn-sm" href="#"><i aria-hidden="true" class="fa fa-forward"></i> Transferir</button>
+                        </a>
+                        <a _ngcontent-bxu-103="">
+                            <button class="btn btn-primary btn-sm" href="#"><i aria-hidden="true" class="fa fa-share"></i> Delegar</button>
+                        </a>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr _ngcontent-bxu-103="">
+                    <td _ngcontent-bxu-103=""><form><input type="checkbox" name="" value=""></form></td>
+                    <td _ngcontent-bxu-103="">misitio2.com.ar</td>
+                    <td _ngcontent-bxu-103="">27/03/2008</td>
+                    <td _ngcontent-bxu-103="">27/08/2018</td>
+                    <td _ngcontent-bxu-103="">Registrado</td>
+
+                    <td _ngcontent-bxu-103="">SI</td>
+                    <td _ngcontent-bxu-103="">
+                      <div _ngcontent-bxu-103="" class="acciones">
+                          <a _ngcontent-bxu-103="">
+                              <button class="btn btn-success btn-sm" href="#"><i aria-hidden="true" class="fa fa-refresh"></i> Renovar</button>
+                          </a>
+                        <a _ngcontent-bxu-103="">
+                            <button class="btn btn-primary btn-sm" href="#"><i aria-hidden="true" class="fa fa-forward"></i> Transferir</button>
+                        </a>
+                        <a _ngcontent-bxu-103="">
+                            <button class="btn btn-primary btn-sm" href="#"><i aria-hidden="true" class="fa fa-share"></i> Delegar</button>
+                        </a>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr _ngcontent-bxu-103="">
+                    <td _ngcontent-bxu-103=""><form><input type="checkbox" name="" value=""></form></td>
+                    <td _ngcontent-bxu-103="">misitio3.com.ar</td>
+                    <td _ngcontent-bxu-103="">27/03/2008</td>
+                    <td _ngcontent-bxu-103="">27/08/2018</td>
+                    <td _ngcontent-bxu-103="">Registrado</td>
+
+                    <td _ngcontent-bxu-103="">SI</td>
+                    <td _ngcontent-bxu-103="">
+                      <div _ngcontent-bxu-103="" class="acciones">
+                          <a _ngcontent-bxu-103="">
+                              <button class="btn btn-success btn-sm" href="#"><i aria-hidden="true" class="fa fa-refresh"></i> Renovar</button>
+                          </a>
+                        <a _ngcontent-bxu-103="">
+                            <button class="btn btn-primary btn-sm" href="#"><i aria-hidden="true" class="fa fa-forward"></i> Transferir</button>
+                        </a>
+                        <a _ngcontent-bxu-103="">
+                            <button class="btn btn-primary btn-sm" href="#"><i aria-hidden="true" class="fa fa-share"></i> Delegar</button>
+                        </a>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr _ngcontent-bxu-103="">
+                    <td _ngcontent-bxu-103=""><form><input type="checkbox" name="" value=""></form></td>
+                    <td _ngcontent-bxu-103="">misitio4.com.ar</td>
+                    <td _ngcontent-bxu-103="">27/03/2008</td>
+                    <td _ngcontent-bxu-103="">27/08/2018</td>
+                    <td _ngcontent-bxu-103="">Registrado</td>
+
+                    <td _ngcontent-bxu-103="">SI</td>
+                    <td _ngcontent-bxu-103="">
+                      <div _ngcontent-bxu-103="" class="acciones">
+                          <a _ngcontent-bxu-103="">
+                              <button class="btn btn-success btn-sm" href="#"><i aria-hidden="true" class="fa fa-refresh"></i> Renovar</button>
+                          </a>
+                        <a _ngcontent-bxu-103="">
+                            <button class="btn btn-primary btn-sm" href="#"><i aria-hidden="true" class="fa fa-forward"></i> Transferir</button>
+                        </a>
+                        <a _ngcontent-bxu-103="">
+                            <button class="btn btn-primary btn-sm" href="#"><i aria-hidden="true" class="fa fa-share"></i> Delegar</button>
+                        </a>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+                <tfoot _ngcontent-bxu-103="" aria-live="polite" aria-relevant="all" role="alert">
+                  <tr _ngcontent-bxu-103="">
+                    <td _ngcontent-bxu-103="" colspan="8">
+                      <div _ngcontent-bxu-103="">
+                        <div _ngcontent-bxu-103="" class="contador">
+                          <pagination-controls _ngcontent-bxu-103="" id="pagDelegaciones">
+                            <pagination-template>
+                              <!--template bindings={}-->
+                              <ul class="ng2-pagination" role="navigation" aria-label="Pagination">
+
+                                <!--template bindings={}-->
+                                <li class="pagination-previous disabled">
+                                  <!--template bindings={}-->
+                                  <!--template bindings={}--><span>
+                Anterior <span class="show-for-sr">page</span>
+                                  </span>
+                                </li>
+
+                                <!--template bindings={}-->
+                                <li class="current">
+                                  <!--template bindings={}-->
+                                  <!--template bindings={}-->
+                                  <div>
+                                    <span class="show-for-sr">You're on page </span>
+                                    <span>1</span>
+                                  </div>
+                                </li>
+
+                                <!--template bindings={}-->
+                                <li class="pagination-next disabled">
+                                  <!--template bindings={}-->
+                                  <!--template bindings={}--><span>
+                 Siguiente <span class="show-for-sr">page</span>
+                                  </span>
+                                </li>
+
+                              </ul>
+                            </pagination-template>
+                          </pagination-controls>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+          </div>
+        </app-gestiondominionic>
+      </div>
+      <app-loading _ngcontent-bxu-37="" _nghost-bxu-13="">
+        <!--template bindings={}-->
+      </app-loading>
+    </app-zero>
+    <!--template bindings={}-->
+    <br>
+    <br>
+    <app-footer _ngcontent-bxu-169="" _nghost-bxu-167="">
+
+      <footer _ngcontent-bxu-167="" class="main-footer">
+        <div _ngcontent-bxu-167="" class="container all-footer">
+          <div _ngcontent-bxu-167="" class="col-xs-12 col-sm-4  institu">
+            <img _ngcontent-bxu-167="" alt="Trámites a Distancia - Presidencia de la Nación" class="image-responsive para-mobile" src="./Mockup_files/logo-tad-mobile.svg">
+            <img _ngcontent-bxu-167="" alt="Trámites a Distancia - Presidencia de la Nación" class="image-responsive para-desktop" src="./Mockup_files/logo-tad.svg">
+          </div>
+          <div _ngcontent-bxu-167="" class="col-xs-12 col-sm-8 ayudas">
+            <ul _ngcontent-bxu-167="">
+              <li _ngcontent-bxu-167=""><a _ngcontent-bxu-167="" href="https://tramitesadistancia.gob.ar/ayuda.html#4" target="_blank">Preguntas Frecuentes</a></li>
+              <li _ngcontent-bxu-167=""><a _ngcontent-bxu-167="" href="https://tramitesadistancia.gob.ar/ayuda.html#5" target="_blank">Contacto</a></li>
+              <li _ngcontent-bxu-167=""><a _ngcontent-bxu-167="" href="https://tramitesadistancia.gob.ar/ayuda.html#3" target="_blank">Manual de Usuario</a></li>
+              <li _ngcontent-bxu-167=""><a _ngcontent-bxu-167="" href="https://tramitesadistancia.gob.ar/terminos-condiciones.html" target="_blank">Términos y Condiciones</a></li>
+            </ul>
+          </div>
+        </div>
+      </footer>
+    </app-footer>
+    <app-loading _ngcontent-bxu-169="" _nghost-bxu-13="">
+      <!--template bindings={}-->
+    </app-loading>
+  </app-root>
+  <script src="./Mockup_files/jquery-3.1.1.min.js.download"></script>
+  <script src="./Mockup_files/bootstrap.min.js.download"></script>
+  <!---SCROLL FUNCTION-->
+  <script src="./Mockup_files/jquery.localScroll.js.download" type="text/javascript"></script>
+  <script src="./Mockup_files/jquery.scrollTo.js.download" type="text/javascript"></script>
+  <script src="./Mockup_files/back-to-top.js.download"></script>
+  <script src="./Mockup_files/loys.js.download"></script>
+  <script src="./Mockup_files/validaciones.js.download"></script>
+  <script src="./Mockup_files/utilidadesFormulario.js.download"></script>
+  <script src="./Mockup_files/utiles.js.download"></script>
+  <script src="./Mockup_files/firmaConToken.js.download"></script>
+
+
+  <script type="text/javascript">
+  var precio = 270;
+  var cantidad = 0;
+     $('#selectall').change(function(){
+      var c = this.checked;
+      $(':checkbox').prop('checked',c);
+      if(c) {          
+        $('#renomult').slideDown('fast');
+        cantidad = 4;
+      } else {
+        $('#renomult').slideUp('fast');
+        cantidad = 0;
+      }
+      checkPrecio();
+  });
+  $('input:checkbox:not("#selectall")').click(function() {
+    var c = this.checked;
+    if(c) {          
+        cantidad ++;
+      } else {
+        cantidad --;
+      }
+      if (cantidad < 1){
+        $('#renomult').slideUp('fast');
+        $('#selectall').prop('checked',false);
+      }else{
+        $('#renomult').slideDown('fast');
+        if (cantidad == 4){
+          $('#selectall').prop('checked',true);
+        }else{
+          $('#selectall').prop('checked',false);
+        }        
+      }
+      checkPrecio();
+  });
+  function checkPrecio() {
+    var st = " dominios seleccionados para renovar";
+    var stb = " Renovar dominios";
+    if(cantidad == 1){
+      st = " dominio seleccionado para renovar";
+      stb = " Renovar dominio";
+    }
+    
+    $('#rendom').html(stb);
+    $('#cantdom').html(cantidad+st);
+    $('#preciodom').html(precio * cantidad);
+    
+  }
+    $(function() {
+      $('[data-toggle="tooltip"]').tooltip()
+    })
+  </script>
+  <script src="./Mockup_files/responsive-tabs.js.download"></script>
+  <script type="text/javascript">
+    document.onkeydown = function(e) {
+      if (e.keyCode === 116) {
+        return false;
+      }
+    };
+
+ 
+
+    (function($) {
+      fakewaffle.responsiveTabs(['xs', 'sm']);
+    })(jQuery);
+  </script>
+
+</body>
+
+</html>

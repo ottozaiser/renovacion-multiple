@@ -1,0 +1,40 @@
+
+/*
+*	Obtiene el formulario controlado y lo renderiza en el div indicado.
+*/
+function loadDisplay(url, displayName, paramffccName, paramTransaccion, paramVisibleButton, paramEditable, paramCaratulaVariable) {
+	try {
+		var aux = document.getElementById(displayName);
+		console.log("loadDisplay aux:" + aux);
+
+		if ("null" === paramffccName) {
+			return false;
+		}
+
+
+      $.get(url, { ffcc: paramffccName, idTransaccion: paramTransaccion, visibleButton: paramVisibleButton, editable: paramEditable, caratulaVariable: paramCaratulaVariable }, function (data1) {
+        $(aux).html(data1);
+/*        if($('#'+displayName).text() < 10){
+          $.get(url, { ffcc: paramffccName, idTransaccion: paramTransaccion, visibleButton: paramVisibleButton, editable: paramEditable, caratulaVariable: paramCaratulaVariable }, function (data1) {
+            $(aux).html(data1);
+          });
+        }*/
+        /*		  $.get(url, { ffcc: paramffccName, idTransaccion: paramTransaccion, visibleButton: paramVisibleButton, editable: paramEditable, caratulaVariable: paramCaratulaVariable }, function (data) {
+         $(aux).html(data);
+         });*/
+      });
+		return true;
+	} catch (err) {
+		return false;
+	}
+}
+
+/*
+*	Encuentra el button renderizado por zk 'btn_ffccGuardar', obtiene el id
+*	y luego invoca el 'click'
+* Cuando el button no es visible se utiliza esta función para guardar la transaccion.
+*/
+function clickButtonffccGuardar() {
+	console.log("clickButtonffccGuardar...");
+	$(jq('$btn_ffccGuardar')).click();
+}

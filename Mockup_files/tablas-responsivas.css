@@ -1,0 +1,73 @@
+@media only screen and (max-width: 550px) { table.tab-respon { display: block; }
+  table.tab-respon thead, table.tab-respon tbody, table.tab-respon th, table.tab-respon td, table.tab-respon tr { display: block; }
+  table.tab-respon thead tr { position: absolute; top: -9999px; left: -9999px; }
+  table.tab-respon tr { border: 1px solid #ccc; }
+  table.tab-respon td { border: none; border-bottom: 1px solid #ccc; position: relative; padding-left: 50% !important; }
+  table.tab-respon td:before { position: absolute; top: 6px; left: 6px; width: 45%; padding-right: 10px; white-space: nowrap; font-weight: bold; }
+  table.tab-respon tfoot { display: block; }
+  table.tab-respon tfoot td { padding-left: 0 !important; border: none !important; }
+  table.tab-respon tfoot td:before { content: "" !important; }
+  table.tab-respon tfoot td div { display: block; } }
+
+@media only screen and (max-width: 550px) { .t-borrador td:nth-of-type(1):before { content: "Fecha"; }
+  .t-borrador td:nth-of-type(2):before { content: "Nombre"; }
+  .t-borrador td:nth-of-type(3):before { content: "Acciones"; }
+  .t-encurso td:nth-of-type(1):before { content: "Fecha"; }
+  .t-encurso td:nth-of-type(2):before { content: "Nombre"; }
+  .t-encurso td:nth-of-type(3):before { content: "Estado"; }
+  .t-encurso td:nth-of-type(4):before { content: "N\00FA mero de Tr\00E1 mite"; }
+  .t-encurso td:nth-of-type(5):before { content: "Apoderado"; }
+  .t-historial td:nth-of-type(1):before { content: "Fecha"; }
+  .t-historial td:nth-of-type(2):before { content: "Nombre"; }
+  .t-historial td:nth-of-type(3):before { content: "N\00FA mero de Tr\00E1 mite"; }
+  .t-tareas td:nth-of-type(1):before { content: "Fecha"; }
+  .t-tareas td:nth-of-type(2):before { content: "Nombre"; }
+  .t-tareas td:nth-of-type(3):before { content: "Tarea"; }
+  .t-tareas td:nth-of-type(4):before { content: "Enviado por"; }
+  .t-tareas td:nth-of-type(5):before { content: "N\00FA mero de Tr\00E1 mite"; }
+  .t-tareas td:nth-of-type(6):before { content: "Acciones"; }
+  .t-tareas-his td:nth-of-type(1):before { content: "Fecha"; }
+  .t-tareas-his td:nth-of-type(2):before { content: "Nombre"; }
+  .t-tareas-his td:nth-of-type(3):before { content: "Tarea"; }
+  .t-tareas-his td:nth-of-type(4):before { content: "Enviado por"; }
+  .t-tareas-his td:nth-of-type(5):before { content: "N\00FA mero de Tr\00E1 mite"; }
+  .t-tareas-his td:nth-of-type(6):before { content: "Acciones"; }
+  .t-notifica td:nth-of-type(1):before { content: "Fecha"; }
+  .t-notifica td:nth-of-type(2):before { content: "Nombre"; }
+  .t-notifica td:nth-of-type(3):before { content: "Mensaje"; }
+  .t-notifica td:nth-of-type(4):before { content: "N\00FA mero de Tr\00E1 mite"; }
+  .t-notifica td:nth-of-type(5):before { content: "Acciones"; }
+  .t-tram-final td:nth-of-type(1):before { content: "Nombre"; }
+  .t-tram-final td:nth-of-type(2):before { content: "N\00FA mero de Tr\00E1 mite"; }
+  .t-tram-final td:nth-of-type(3):before { content: "Estado"; }
+  .t-tram-final td:nth-of-type(4):before { content: "Acciones"; }
+  .t-doc-pre td:nth-of-type(1):before { content: "Documento"; }
+  .t-doc-pre td:nth-of-type(2):before { content: "Fecha de creaci\00f3 n"; }
+  .t-doc-pre td:nth-of-type(3):before { content: "Acciones"; }
+  .t-apoderado td:nth-of-type(1):before { content: "CUIT/CUIL"; }
+  .t-apoderado td:nth-of-type(2):before { content: "Nombre"; }
+  .t-apoderado td:nth-of-type(3):before { content: "Fecha vencimiento"; }
+  .t-apoderado td:nth-of-type(4):before { content: "Acciones"; }
+  .t-representado td:nth-of-type(1):before { content: "CUIT/CUIL"; }
+  .t-representado td:nth-of-type(2):before { content: "Nombre"; }
+  .t-representado td:nth-of-type(3):before { content: "Fecha vencimiento"; }
+  .t-representado td:nth-of-type(4):before { content: "Acciones"; }
+  .t-detalle-t td:nth-of-type(1):before { content: "Fecha"; }
+  .t-detalle-t td:nth-of-type(2):before { content: "Documento"; }
+  .t-detalle-t td:nth-of-type(3):before { content: "\00d9 ltimo destino"; }
+  .t-finalizado td:nth-of-type(1):before { content: "Documento"; }
+  .t-finalizado td:nth-of-type(2):before { content: "Acciones"; }
+  .tab-cont-tramite td:nth-of-type(1):before { content: "N\00FA mero de Tr\00E1 mite"; }
+  .tab-cont-tramite td:nth-of-type(2):before { content: "Nombre"; }
+  .tab-cont-tramite td:nth-of-type(3):before { content: "Acciones"; } 
+  .t-dominios td:nth-of-type(1):before { content: "Seleccionar"; }
+  .t-dominios td:nth-of-type(2):before { content: "Dominio"; }
+  .t-dominios td:nth-of-type(3):before { content: "Alta"; }
+  .t-dominios td:nth-of-type(4):before { content: "Vencimiento"; }
+  .t-dominios td:nth-of-type(5):before { content: "Estado"; }
+  .t-dominios td:nth-of-type(6):before { content: "Delegado"; }
+  .t-dominios td:nth-of-type(7):before { content: "Acciones"; } 
+  .t-delegaciones td:nth-of-type(1):before { content: "Host"; }
+  .t-delegaciones td:nth-of-type(2):before { content: "Ipv4"; }
+  .t-delegaciones td:nth-of-type(3):before { content: "Ipv6"; }
+  .t-delegaciones td:nth-of-type(6):before { content: "Acciones"; } }
